@@ -14,7 +14,7 @@ var width = doodle.offsetWidth;
 var layers = [
 	{
 		x: [0, pageWidth],
-		y: 800,
+		y: 900,
 	},
 	{
 		x: [200, 300],
@@ -68,6 +68,12 @@ window.addEventListener('deviceorientation', function(ev){
 	}
 	if(x>pageWidth){
 		x = 0;
+	}
+	if(x<0){
+		x = pageWidth;
+	}
+	if(y > 1000){
+		y = 0;
 	}
 	vx += ax;
 	vy += g;
