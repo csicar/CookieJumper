@@ -32,6 +32,10 @@ var layers = [
 		x: [400, 500],
 		y: 600,
 	},
+	{
+		x: [200, 300],
+		y: 400,
+	},
 ]
 function addLayer(x, y){
 	layers.push({x: [x[0], x[1]], y: y})
