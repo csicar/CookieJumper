@@ -1,0 +1,14 @@
+.layer {
+	height: 10px;
+	background: #2C98C0;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+.doodle {
+	height: 30px;
+	width: 30px;
+	background-image: url('cookie.gif');
+	background-size: 100%;
+}
