@@ -13,8 +13,8 @@ var x = 0;
 var width = doodle.offsetWidth;
 var layers = [
 	{
-		x: [0, pageWidth],
-		y: 900,
+		x: [10, 400],
+		y: 750,
 	},
 	{
 		x: [200, 300],
@@ -26,7 +26,7 @@ var layers = [
 	},
 	{
 		x: [100, 200],
-		y: 300,
+		y: 500,
 	},
 	{
 		x: [400, 500],
@@ -55,8 +55,8 @@ window.addEventListener('deviceorientation', function(ev){
 (function next(){
 	var inPos = layers.filter(function(layer){
 		return (
-			((layer.y-y)<1)&&
-			((layer.y-y)>-1)&&
+			((layer.y-y)<2)&&
+			((layer.y-y)>-2)&&
 			(x+width>layer.x[0])&&
 			(x<layer.x[1])&&
 			(vy>0)
