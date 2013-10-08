@@ -33,8 +33,8 @@ var layers = [
 		y: 600,
 	},
 ]
-function addLayer(x0, x1, y){
-	layers.push({x: [x0, x1], y: y})
+function addLayer(x, y){
+	layers.push({x: [x[0], x[1]], y: y})
 	render()
 }
 function render(){
