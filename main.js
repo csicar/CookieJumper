@@ -3,8 +3,8 @@ var doodle = document.querySelector('.doodle')
 var pageWidth = document.body.offsetWidth;
 var pageHeight = document.body.scrollHeight;
 var ax = 0;
-var g = 0.00981;
-var v_layer = -1.5;
+var g = 0.0381;
+var v_layer = -3;
 var vy = 0;
 var vx = 0;
 var y = pageHeight+100;
@@ -83,6 +83,8 @@ window.addEventListener('deviceorientation', function(ev){
 	}
 	if(y > 1000){
 		y = 0;
+	}else{
+		setTimeout(next, 1);
 	}
 	vx += ax;
 	vy += g;
@@ -90,5 +92,4 @@ window.addEventListener('deviceorientation', function(ev){
 	x += vx;
 	doodle.style.top = y-doodle.offsetHeight+'px';
 	doodle.style.left = x+'px';
-	setTimeout(next, 1);
 }())
