@@ -1,17 +1,18 @@
 document.body.innerHTML += '<div class="doodle" style="position: absolute;"></div>'
 var doodle = document.querySelector('.doodle')
-doodle.style.top = '100px';
-doodle.style.left = '0px';
 var pageWidth = document.body.offsetWidth;
+var pageHeight = document.body.scrollHeight;
 var ax = 0;
-var g = 0.0581;
-var v_layer = -4;
+var g = 0.00981;
+var v_layer = -1.5;
 var vy = 0;
 var vx = 0;
-var y = 500;
-var x = 0;
+var y = pageHeight+100;
+var x = pageWidth/2;
 var width = doodle.offsetWidth;
-var layers = [
+doodle.style.top = y;
+doodle.style.left = x;
+var layers = []/*[
 	{
 		x: [10, 400],
 		y: 750,
@@ -36,10 +37,14 @@ var layers = [
 		x: [200, 300],
 		y: 400,
 	},
-]
+]*/
 function addLayer(x, y){
 	layers.push({x: [x[0], x[1]], y: y})
 	render()
+}
+for(var i = 0; i < 10; i++){
+	var pos = ((Math.random()%2)+(Math.random()%2)+(Math.random()%2)+(Math.random()%2))*100
+	addLayer([pos, pos+100], i*100)
 }
 function render(){
 	d3.select('body').data(layers)
@@ -53,8 +58,9 @@ function render(){
 render()
 
 window.addEventListener('deviceorientation', function(ev){
- 	//ax = ev.gamma/50;
+ 	//ax = ev.gamma/100;
  	vx = ev.gamma/3;
+ 	//x = ev.gamma*10+100;
  }, false);
 (function next(){
 	var inPos = layers.filter(function(layer){
@@ -67,7 +73,6 @@ window.addEventListener('deviceorientation', function(ev){
 		);
 	})
 	if(inPos.length){
-		console.log(inPos, y, x, vy)
 		vy = v_layer;
 	}
 	if(x>pageWidth){
@@ -85,5 +90,5 @@ window.addEventListener('deviceorientation', function(ev){
 	x += vx;
 	doodle.style.top = y-doodle.offsetHeight+'px';
 	doodle.style.left = x+'px';
-	setTimeout(next, 10);
+	setTimeout(next, 1);
 }())
